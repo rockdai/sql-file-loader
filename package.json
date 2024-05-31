@@ -1,5 +1,5 @@
 {
-  "name": "sql-file-loader",
+  "name": "@rockdai/sql-file-loader",
   "version": "0.0.1",
   "main": "./index.js"
 }
