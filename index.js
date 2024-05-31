@@ -4,15 +4,15 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function sqlFileLoader(dir) {
-  const fileList = fs.readdirSync(dir);
+  const filelist = fs.readdirSync(dir);
   const result = [];
-  for (const fileName of fileList) {
-    if (fileName.startsWith('.') || !fileName.endsWith('.sql')) {
+  for (const filename of filelist) {
+    if (filename.startsWith('.') || !filename.endsWith('.sql')) {
       continue;
     }
-    const content = fs.readFileSync(path.join(dir, fileName), 'utf8');
-    const tableName = fileName.replace(/\.sql$/, '');
-    result.push([ tableName, content ]);
+    const content = fs.readFileSync(path.join(dir, filename), 'utf8');
+    const name = filename.replace(/\.sql$/, '');
+    result.push({ name, content });
   }
   return result;
 };
